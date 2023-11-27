@@ -1,0 +1,299 @@
+<!-- Arey Kammo -->
+<!-- Pata nahi kya jaadu hai college life mein…Jahan anjaane milte hai aur dost ban jaate hai…Zindagi bhar ke liye… aur aise waise dost nahi…kutte dost-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEX Color</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .container{
+            width: 100%;
+            min-height: 100vh;
+            padding-left: 8%;
+            padding-right: 8%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 100px 0;
+        }
+
+        .col-1{
+                flex-basis: 40%;
+                position: relative;
+                margin-left: 50px;
+        }
+
+        .col-1 h2{
+                font-size: 54px;
+        }
+
+        .col-3{
+            flex-basis: 60%; 
+            padding-left: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .col-3 p {
+                font-size: 18px;
+                color: #333;
+        }
+
+        .col-3 h5 {
+                align-items: flex-start;
+        }
+
+        .col-1 h3{
+                font-size: 30px;
+                color: #707070;
+                font-weight: 100;
+                margin: 20px 0 10px;
+        }
+
+        .color-picker {
+                margin: 30px 0;
+                font-size: 50px;
+                display: flex;
+                align-items: center; 
+        }
+
+        .color-picker label {
+                margin-right: 15px; 
+        }
+
+        .color-picker input[type="color"] {
+                border: 2px solid #ddd; 
+                border-radius: 8px; 
+                padding: 8px; 
+                cursor: pointer;
+                width: 40px; 
+                height: 40px;
+        }
+
+        #colorPicker {
+            margin-right: 10px; 
+        }
+
+        #codeArea {
+            font-size: 20px;
+            color: #333;
+            font-family: 'Poppins', sans-serif; 
+            font-weight: bold; 
+            display: flex;
+            align-items: center;
+        }
+
+        .col-1 p{
+                font-size: 16px;
+                color: #b7b7b7;
+                font-weight: 100;
+        }
+
+        .col-1 h4{
+            margin: 30px 0;
+            font-size: 20px;
+        }
+
+        button{
+            width: 140px;
+            border: 0;
+            padding: 12px 10px;
+            outline: none;
+            color: #fff;
+            background: linear-gradient(to right, #fb5283, #ff3527);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: width 0.5s;
+            margin-top: 5px;
+            margin-bottom: 17px;
+        }
+        button:hover {
+            width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 160px; 
+            background: linear-gradient(to right, #ff3527, #fb5283); 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+        }
+
+        button img{
+            width: 30px;
+            display: none;
+        }
+
+        button:hover img{
+            display: block;
+        }
+
+        
+
+        .col-1::after{
+            content: '';
+            width: 10px;
+            height: 57%;
+            background: linear-gradient(#ff469f, #ff6062);
+            position: absolute;
+            left: -40px;
+            top: 8px;
+        }
+
+        .col-2{
+            position: relative;
+            flex-basis: 60%;
+            display: flex;
+            align-items: center;
+        }
+
+        .col-2.controller{
+            width: 90%;
+        }
+
+        .color-box{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: linear-gradient(#ff54a2, #ff575a);
+            border-radius: 20px 0 0 20px;
+            height: 100%;
+            width: 80%;
+            z-index: -1;
+            transform: translateX(150px);
+        }
+
+        .saved-colors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .saved-color {
+            margin: 0 10px 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .saved-color-box {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .saved-color-name {
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <h2>HEX<br>COLOR Thing</h2>
+                <h3>Get the Color Code Here</h3>
+                <p>Just by clicking the Box down here</p>
+                <span class="color-picker">
+                <input type="color" name="color" id="colorPicker">
+                <span id="codeArea">#1DB8CE</span>
+                </span>
+                <button>Save Color<img src="arrow.png"></button>
+                <h5>Developed By</h5>
+                <h6>Danush Kumar</h6>
+                <h6>Karti</h6>
+            </div>
+            <div class="col-2">
+                <div class="color-box"></div>
+            </div>
+
+            <div class="col-3">
+                <h3>Color Saved By You</h3>
+                <div class="saved-colors">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Color inga tha codea translate aaguthu
+        document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('input[type=color]').forEach(function (picker) {
+            var codeArea = document.getElementById('codeArea');
+            var savedColorsContainer = document.querySelector('.saved-colors');
+
+            codeArea.innerHTML = picker.value.toUpperCase();
+
+            picker.addEventListener('input', function () {
+                var uppercaseValue = picker.value.toUpperCase();
+                codeArea.innerHTML = uppercaseValue;
+            });
+
+            var saveButton = document.querySelector('button');
+            
+            // Save Button :)
+            saveButton.addEventListener('click', function () {
+                var selectedColor = picker.value.toUpperCase();
+                var savedColorDiv = document.createElement('div');
+                savedColorDiv.classList.add('saved-color');
+                var savedColorBox = document.createElement('div');
+                savedColorBox.classList.add('saved-color-box');
+                savedColorBox.style.backgroundColor = selectedColor;
+                var savedColorName = document.createElement('span');
+                savedColorName.classList.add('saved-color-name');
+                savedColorName.textContent = selectedColor;
+                savedColorDiv.appendChild(savedColorBox);
+                savedColorDiv.appendChild(savedColorName);
+                savedColorsContainer.appendChild(savedColorDiv);
+            });
+        });
+    });
+    </script>
+    
+
+
+
+</body>
+
+</html>
